@@ -28,6 +28,10 @@ cd = pd.concat(dataframes, ignore_index=True)
 indexApplication = cd[(cd['APPLICATION_TYPE']==7) | (cd['APPLICATION_TYPE']==9)].index
 cd.drop(indexApplication , inplace=True)
 
+#Calculate the direct costs awarded during the study period in billions of USD
+print('Direct costs awarded during study period')
+total_directs = cd['DIRECT_COST_AMT'].sum() / 1e9; print(f"${total_directs:,.2f}B")
+
 # Calculate the number of projects received by each organization between 2014 and 2023 (inclusive)
 org_total_awards = cd['ORG_DUNS'].value_counts(ascending=False).reset_index()
 
